@@ -10,7 +10,7 @@ from common import ROOT, han_count, split_frontmatter  # noqa: E402,F401
 
 TOPIC = ROOT / "topic" / "ai-era-coding"
 SECTIONS = ["①", "②", "③", "④", "⑤", "⑥"]
-NUM_RE = re.compile(r"\d+(?:[.,]\d+)*")
+NUM_RE = re.compile(r"(?<![A-Za-z\d.,])\d+(?:[.,]\d+)*(?![A-Za-z\d])")  # CS50、GPT4 這類名稱裡的數字不算
 
 
 def parse_brief() -> tuple[dict[str, str], list[str]]:
