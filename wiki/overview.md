@@ -22,6 +22,7 @@ updated: 2026-11-18
 - [S2 技能養成研究](sources/s2-skill-formation.md)
 - [S3 初學者用 Codex](sources/s3-novices-codex.md)
 - [S4 就業研究](sources/s4-canaries-employment.md)
+- [S5 哈佛 CS50](sources/s5-cs50-ai.md)
 - [隨機對照試驗](concepts/rct.md)
 - [AI 曝險與替代／互補](concepts/ai-exposure.md)
 - [認知卸載](concepts/cognitive-offloading.md)

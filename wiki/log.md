@@ -52,3 +52,13 @@ title: Wiki 紀錄
   5. 作者強調是描述性、非因果；不預測未來
 - 新增頁面：sources/s4-canaries-employment.md、concepts/ai-exposure.md；更新 topics/why-learn.md（新增 ①）、overview、index
 - lint：第 1 輪通過；但自我檢查發現主題頁「帶走的觀念」寫了 S4 沒說的推論（入門門檻會變高），lint 抓不到無數字、無結果詞的推論句 → 改寫為有出處的句子
+
+## [2026-11-18] ingest | S5 哈佛 CS50 導入 AI 助教
+- 重點（5 行）：
+  1. 不禁止 AI，改用課程自製、「只引導不給答案」的 AI 工具，限制商用工具
+  2. 工具：解釋程式碼、程式風格說明、聊天助教 CS50 Duck；論壇回答由助教把關
+  3. 愛心機制限制提問次數，鼓勵想清楚再問
+  4. 問卷多為正面（47% 非常有幫助）；課程問題回答 88% 正確
+  5. 限制：非匿名問卷，沒有學習成效對照實驗
+- 新增頁面：sources/s5-cs50-ai.md；更新 topics/how-to-learn.md（新增 ⑤）、overview、index；why-learn 的「帶走的觀念」補上出處 (S1, p.12)
+- lint：第 1 輪通過（另手動把 S5 頁的小標改成 AGENTS.md 規定的骨架名稱，lint 目前不檢查骨架）

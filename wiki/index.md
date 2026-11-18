@@ -15,7 +15,7 @@ updated: 2026-11-18
 ## 主題綜合頁
 
 - [為什麼還要學程式](topics/why-learn.md) — 簡報 ①–③：就業、速度、學習成效（來源：S1, S2, S3, S4）
-- [該怎麼學程式](topics/how-to-learn.md) — 簡報 ④–⑥：怎麼用、學到哪、怎麼練（來源：S2, S3）
+- [該怎麼學程式](topics/how-to-learn.md) — 簡報 ④–⑥：怎麼用、學到哪、怎麼練（來源：S2, S3, S5）
 
 ## 比較頁
 
@@ -33,3 +33,4 @@ updated: 2026-11-18
 - [S2 Anthropic：用 AI 學新東西，學得會嗎](sources/s2-skill-formation.md) — 測驗低 17%，除錯差最多；用法決定學習成效（來源：S2）
 - [S3 初學者用 Codex 學 Python](sources/s3-novices-codex.md) — 練習更好、事後沒變差；每題後要自己改程式（來源：S3）
 - [S4 礦坑裡的金絲雀：AI 對年輕人就業的影響](sources/s4-canaries-employment.md) — 高曝險職業的年輕人就業低 19%，主要是少招新人（來源：S4）
+- [S5 哈佛 CS50：讓 AI 當助教](sources/s5-cs50-ai.md) — 只引導不給答案的 AI 助教與使用限制（來源：S5）
