@@ -29,6 +29,9 @@ updated: 2026-11-18
 
 - 結果來自**非匿名問卷**與回答正確率，沒有比較學習成效的對照實驗 (S5, p.4–5)。
 
+⚠ 與 S6 的觀察不同，見[感覺 vs 實際](../comparisons/feeling-vs-reality.md)
+
 ## 相關頁面
 
 - [該怎麼學程式](../topics/how-to-learn.md)
+- [感覺 vs 實際](../comparisons/feeling-vs-reality.md)

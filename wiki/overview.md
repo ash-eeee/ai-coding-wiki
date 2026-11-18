@@ -14,7 +14,9 @@ updated: 2026-11-18
 3. 用 AI 學東西，要怎麼用才學得會？→ [該怎麼學程式](topics/how-to-learn.md)
 4. 兩篇研究看似矛盾時，先比條件 → [S3 vs S2](comparisons/s3-vs-s2-novice-learning.md)
 
-（隨 ingest 逐步補完。）
+5. 自己的感覺可信嗎？→ [感覺 vs 實際](comparisons/feeling-vs-reality.md)
+
+一句話：AI 讓會的人更快，但「會」要靠自己讀、改、除錯練出來。
 
 ## 相關頁面
 
@@ -23,6 +25,8 @@ updated: 2026-11-18
 - [S3 初學者用 Codex](sources/s3-novices-codex.md)
 - [S4 就業研究](sources/s4-canaries-employment.md)
 - [S5 哈佛 CS50](sources/s5-cs50-ai.md)
+- [S6 越拉越大的差距](sources/s6-widening-gap.md)
 - [隨機對照試驗](concepts/rct.md)
+- [後設認知](concepts/metacognition.md)
 - [AI 曝險與替代／互補](concepts/ai-exposure.md)
 - [認知卸載](concepts/cognitive-offloading.md)

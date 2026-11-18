@@ -62,3 +62,14 @@ title: Wiki 紀錄
   5. 限制：非匿名問卷，沒有學習成效對照實驗
 - 新增頁面：sources/s5-cs50-ai.md；更新 topics/how-to-learn.md（新增 ⑤）、overview、index；why-learn 的「帶走的觀念」補上出處 (S1, p.12)
 - lint：第 1 輪通過（另手動把 S5 頁的小標改成 AGENTS.md 規定的骨架名稱，lint 目前不檢查骨架）
+
+## [2026-11-18] ingest | S6 The Widening Gap 初學者與生成式 AI
+- 重點（5 行）：
+  1. 美國一所大學 CS1 的 21 名學生，可用 Copilot、ChatGPT 解一題，觀察＋訪談＋眼動追蹤
+  2. 20/21 完成；加速的學生能忽略錯誤或無用的 AI 建議
+  3. 卡住的 10 人中 9 人靠 AI 做出答案，卻多半以為自己懂了（能力錯覺）
+  4. 新的後設認知困難：被打斷、被誤導、自以為跟上進度；成績低者較多
+  5. 與 S5「像私人家教」的問卷印象對照 → 建第二個比較頁「感覺 vs 實際」
+- 新增頁面：sources/s6-widening-gap.md、concepts/metacognition.md、comparisons/feeling-vs-reality.md；更新 S5 摘要頁（加 ⚠）、兩個主題頁（how-to-learn 補齊 ⑥ 五個子題）、overview、index
+- 頁數達上限：15/15（source 6、concept 4、comparison 2、topic 2、overview 1）
+- lint：第 1 輪通過

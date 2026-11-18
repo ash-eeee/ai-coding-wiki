@@ -1,7 +1,7 @@
 ---
 type: topic
 title: 為什麼還要學程式
-sources: [S1, S2, S3, S4]
+sources: [S1, S2, S3, S4, S6]
 updated: 2026-11-18
 ---
 
@@ -34,10 +34,14 @@ updated: 2026-11-18
 
 ⚠ 與 S2 結論不同，見[S3 vs S2](../comparisons/s3-vs-s2-novice-learning.md)
 
+大學入門課的觀察也提醒：原本成績較好的學生用 AI 加速，卡住的學生卻更難發現自己不懂 (S6, p.23)。
+
 ## 相關頁面
 
 - [S4 就業研究](../sources/s4-canaries-employment.md)
 - [S1 METR 生產力實驗](../sources/s1-metr-productivity.md)
 - [S2 技能養成研究](../sources/s2-skill-formation.md)
 - [S3 初學者用 Codex](../sources/s3-novices-codex.md)
+- [S6 越拉越大的差距](../sources/s6-widening-gap.md)
+- [感覺 vs 實際](../comparisons/feeling-vs-reality.md)
 - [總覽](../overview.md)
