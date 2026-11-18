@@ -142,9 +142,10 @@ def main() -> int:
         han_total = 0
         for b in blocks(body):
             if b.startswith("#"):
-                in_related = "相關頁面" in b
+                in_related = "相關頁面" in b or "白話定義" in b
                 continue
             plain = QUOTE_RE.sub("", strip_cites_links(b))
+            plain = re.sub(r"^([-*]|\d+\.)\s", "", plain)  # 條列編號不算數字
             han_total += han_count(plain)
             cites = parse_cites(b)
             for code, a, z in cites:
