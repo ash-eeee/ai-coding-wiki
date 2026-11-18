@@ -73,3 +73,9 @@ title: Wiki 紀錄
 - 新增頁面：sources/s6-widening-gap.md、concepts/metacognition.md、comparisons/feeling-vs-reality.md；更新 S5 摘要頁（加 ⚠）、兩個主題頁（how-to-learn 補齊 ⑥ 五個子題）、overview、index
 - 頁數達上限：15/15（source 6、concept 4、comparison 2、topic 2、overview 1）
 - lint：第 1 輪通過
+
+## [2026-11-18] lint | A6 全站 lint 與 AI 語意審查
+- `lint_wiki.py` 全站通過（15 頁、9 項）。
+- 新開 subagent 做語意審查（只給 wiki、raw/text、AGENTS.md）：20 個問題（高 2、中 8、低 10）＋ 3 項遺漏，全部是腳本抓不到的條件、語氣、推論問題。紀錄見 `process/a6-wiki-review.md`。
+- 全部修正：S4 時間點改正、總覽總結句改為有出處的多句、就業 19% 補「相對」條件與實際約少 11%、S2 用法分析標探索性、S3 vs S2 比較頁擴充為含 S6（基礎弱者）、補 S3 基礎弱者無受益、S6 老師示範、S2 學習模式等。
+- 修正後 `lint_wiki.py` 再次全站通過。

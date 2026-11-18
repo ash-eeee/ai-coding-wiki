@@ -1,22 +1,20 @@
 ---
 type: overview
 title: 總覽：AI 時代怎麼學程式
-sources: []
+sources: [S1, S2, S3, S4, S6]
 updated: 2026-11-18
 ---
 
 # 總覽：AI 時代怎麼學程式
 
-這個 wiki 回答一個問題：AI 會寫程式了，我們該學到什麼程度、怎麼學？
+這個 wiki 回答：AI 會寫程式了，我們該學到什麼程度、怎麼學？
 
-1. AI 時代入門工作變少了嗎？→ [為什麼還要學程式](topics/why-learn.md)
-2. 用 AI 的「感覺」可靠嗎？→ [為什麼還要學程式](topics/why-learn.md)
-3. 用 AI 學東西，要怎麼用才學得會？→ [該怎麼學程式](topics/how-to-learn.md)
-4. 兩篇研究看似矛盾時，先比條件 → [S3 vs S2](comparisons/s3-vs-s2-novice-learning.md)
+1. 入門工作變少了嗎？→ [為什麼還要學程式](topics/why-learn.md)
+2. 用 AI 學東西，要怎麼用才學得會？→ [該怎麼學程式](topics/how-to-learn.md)
+3. 研究結論不同時，先比條件 → [初學者用 AI 學得好嗎](comparisons/s3-vs-s2-novice-learning.md)
+4. 自己的感覺可信嗎？→ [感覺 vs 實際](comparisons/feeling-vs-reality.md)
 
-5. 自己的感覺可信嗎？→ [感覺 vs 實際](comparisons/feeling-vs-reality.md)
-
-一句話：AI 讓會的人更快，但「會」要靠自己讀、改、除錯練出來。
+一句話：年輕人的入門工作在 AI 取代型職業減少 (S4, p.1)；用 AI 學新東西整體學到較少 (S2, p.18)；基礎好的初學者較能從 AI 得益 (S3, p.13; S6, p.23)；資深者在熟悉的大專案用 AI 反而較慢 (S1, p.1)。
 
 ## 相關頁面
 

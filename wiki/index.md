@@ -19,7 +19,7 @@ updated: 2026-11-18
 
 ## 比較頁
 
-- [S3 vs S2：用 AI 學程式，學得更好還是更差](comparisons/s3-vs-s2-novice-learning.md) — 結論不同，因為對象、AI 用法、測驗方式不同（來源：S2, S3）
+- [初學者用 AI 學得好嗎：S3 vs S2、S6](comparisons/s3-vs-s2-novice-learning.md) — 結論不同，因為對象、AI 用法、測驗方式不同（來源：S2, S3, S6）
 - [感覺 vs 實際：用 AI 的自我感受可信嗎](comparisons/feeling-vs-reality.md) — 自評、問卷 vs 實測、觀察（來源：S1, S2, S5, S6）
 
 ## 概念頁
