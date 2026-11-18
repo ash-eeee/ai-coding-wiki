@@ -1,7 +1,7 @@
 # 原始資料清單
 
 > 論文 PDF 與轉出的純文字（`raw/text/`）因版權考量不推上 GitHub，請依下列連結自行取得。
-> 書目資料以 PDF 首頁為準。純文字由 `scripts/pdf_to_text.py` 產生（本次因系統尚未安裝 `pdftotext`，改用 pypdf layout 模式；頁與頁之間以 `\f` 分隔，頁碼即 PDF 頁序）。
+> 書目資料以 PDF 首頁為準。純文字由 `scripts/pdf_to_text.py` 產生（使用 pypdf plain 模式：雙欄論文用 layout 模式會左右欄交錯、無法逐字比對引文；頁與頁之間以 `\f` 分隔，頁碼即 PDF 頁序）。
 
 | 代號 | 書目資料 | 原始連結 | 本地檔名 |
 |---|---|---|---|
