@@ -34,15 +34,17 @@ def load_pages(txt: Path) -> list[str]:
     return _page_cache[txt]
 
 
-def normalize(s: str) -> str:
+def normalize(s: str, keep_line_hyphen: bool = False) -> str:
     """正規化：連字號斷行接回、連字（ﬁ）展開、彎引號轉直引號、去除所有空白、小寫。
 
     去除所有空白是因為 PDF 擷取常把字黏在一起或多插空白；字元順序仍須完全一致。
+    keep_line_hyphen=True 時保留行尾連字號（用於本來就有連字號的複合字，例如 mini-task 剛好斷在行尾）。
     """
     s = unicodedata.normalize("NFKC", s)
     s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     s = s.replace("–", "-").replace("—", "-").replace("−", "-")
-    s = re.sub(r"-\s*\n\s*", "", s)  # 行尾連字號斷字
+    if not keep_line_hyphen:
+        s = re.sub(r"-\s*\n\s*", "", s)  # 行尾連字號斷字
     s = re.sub(r"\s+", "", s)
     return s.lower()
 
@@ -87,6 +89,8 @@ def find_quote(quote: str, pages: list[str], page_range: range | None = None) ->
     q = normalize(quote)
     idxs = page_range if page_range is not None else range(1, len(pages) + 1)
     for p in idxs:
-        if 1 <= p <= len(pages) and q in normalize(pages[p - 1]):
-            return p
+        if 1 <= p <= len(pages):
+            t = pages[p - 1]
+            if q in normalize(t) or q in normalize(t, keep_line_hyphen=True):
+                return p
     return None
