@@ -5,6 +5,7 @@
 - source 代號存在於 raw/sources.md；page 在範圍內
 - quote 不超過 25 個英文字，且（正規化後）出現在 raw/text 該頁
 - numbers 每個數字都出現在 quote 或原文該頁
+- v2：必填 scope（對象、情境、保留語氣等適用條件）；keep 為選填清單（稿子引用此卡時，同頁至少要出現其中一個詞）
 通過 exit 0，否則列出卡片編號與原因、exit 1。
 """
 import re
@@ -15,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ROOT, find_quote, load_pages, load_sources, normalize, parse_list, split_frontmatter  # noqa: E402
 from topic_common import load_cards  # noqa: E402
 
-REQUIRED = ["id", "section", "claim", "numbers", "wiki", "source", "page", "quote"]
+REQUIRED = ["id", "section", "claim", "scope", "numbers", "wiki", "source", "page", "quote"]  # v2 加 scope
 
 
 def main() -> int:

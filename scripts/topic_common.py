@@ -10,6 +10,7 @@ from common import ROOT, han_count, split_frontmatter  # noqa: E402,F401
 
 TOPIC = ROOT / "topic" / "ai-era-coding"
 SECTIONS = ["①", "②", "③", "④", "⑤", "⑥"]
+TAG_RE = re.compile(r"\s*〔([^〕]*)〕\s*$")
 NUM_RE = re.compile(r"(?<![A-Za-z\d.,])\d+(?:[.,]\d+)*(?![A-Za-z\d])")  # CS50、GPT4 這類名稱裡的數字不算
 
 
@@ -70,6 +71,7 @@ def load_cards() -> dict[str, dict]:
         if len(q) >= 2 and q[0] == q[-1] and q[0] in "\"'":
             q = q[1:-1]
         fm["quote_text"] = q
+        fm["keep_list"] = parse_list_field(fm.get("keep", "[]"))
         cards[fm.get("id", p.stem)] = fm
     return cards
 
@@ -92,17 +94,21 @@ def parse_outline() -> dict[str, list[str]]:
 
 def parse_draft(p: Path) -> dict:
     title, bullets, source_line, cards = "", [], "", []
+    bullet_cards: list[list[str]] = []
     for line in p.read_text(encoding="utf-8").splitlines():
         s = line.strip()
         if s.startswith("# ") and not title:
             title = s[2:].strip()
         elif s.startswith("- "):
-            bullets.append(s[2:].strip())
+            b = s[2:].strip()
+            m = TAG_RE.search(b)  # v2：每個重點結尾標 〔C01, C02〕
+            bullet_cards.append(re.findall(r"C\d+", m.group(1)) if m else [])
+            bullets.append(TAG_RE.sub("", b).strip())
         elif re.match(r"^出處[:：]", s):
             source_line = re.sub(r"^出處[:：]\s*", "", s)
         elif re.match(r"^卡片[:：]", s):
             cards = re.findall(r"C\d+", s)
-    return {"title": title, "bullets": bullets, "source": source_line, "cards": cards}
+    return {"title": title, "bullets": bullets, "bullet_cards": bullet_cards, "source": source_line, "cards": cards}
 
 
 def draft_files() -> list[Path]:
