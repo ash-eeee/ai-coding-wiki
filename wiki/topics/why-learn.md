@@ -1,7 +1,7 @@
 ---
 type: topic
 title: 為什麼還要學程式
-sources: [S1]
+sources: [S1, S2]
 updated: 2026-11-18
 ---
 
@@ -17,7 +17,12 @@ updated: 2026-11-18
 
 **帶走的觀念**：會不會變快，要靠[實際測量](../concepts/rct.md)，而且要看情境。
 
+## ③ 用 AI 學得會嗎？
+
+學新程式庫時用 AI，事後不用 AI 的測驗分數低 17%，速度也沒有顯著變快 (S2, p.2)。分數差最多的是除錯題 (S2, p.11)。詳見[該怎麼學程式](how-to-learn.md)。
+
 ## 相關頁面
 
 - [S1 METR 生產力實驗](../sources/s1-metr-productivity.md)
+- [S2 技能養成研究](../sources/s2-skill-formation.md)
 - [總覽](../overview.md)
