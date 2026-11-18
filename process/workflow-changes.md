@@ -55,4 +55,12 @@
 | N4 check_drafts（v2） | 補 〔Cxx〕 標籤後第 1 輪通過，可見文字沒有改 |
 | N5 build_slides | 產生的 HTML 與 v1 逐字相同 |
 | G4 check_render | 第 1 輪通過 |
-| G3 round-3 | 見 `report.md` 第 7 節 |
+| G3 round-3 | 11/13 PASS：slide-01 漏「熟悉的大專案」；slide-04「沒寫過程式」應為「沒寫過**文字**程式」，而且這個錯誤被 v2 寫進 C12 的 `keep` |
+| G3 round-4 | 13/13 PASS |
+| G4 | 通過 |
+
+## 5. v2 跑完後的新發現（尚未改成 v3）
+
+1. **`keep` 會鎖住錯誤**：keep 是「一定要留的詞」，寫錯時腳本會強制稿子保留錯字。對策：keep 也列入 G3 審查（round-3 起已要求審查者檢查 keep）；之後可考慮讓 `check_cards.py` 要求 keep 詞必須出現在 scope 裡，至少確保兩者一致。
+2. **G3 審查者標準不一致**：同一句話（slide-01）在 round-1、2 判 PASS，round-3 判 FAIL。對策：在 agent 定義裡把 FAIL 的門檻寫得更具體（例如列出必須保留的條件類型：對象、情境、是否顯著、保留語氣），而不是每次在 prompt 裡補充。
+3. **修正本身會引入新錯**：slide-04 的錯字是在 round-1 退件後修改時加進去的。每次修正後仍要重跑 G3（v1、v2 都有這樣做，才抓得到）。
