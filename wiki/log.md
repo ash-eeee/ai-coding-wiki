@@ -32,3 +32,13 @@ title: Wiki 紀錄
 - 新增頁面：sources/s2-skill-formation.md、concepts/cognitive-offloading.md、topics/how-to-learn.md；更新 topics/why-learn.md、overview.md、index.md
 - 與 S1 的關係：兩者都沒看到 AI 帶來顯著加速，但 S1 是資深者做熟悉專案、S2 是學新東西，條件不同（不構成矛盾，未建比較頁）
 - lint：第 1 輪通過
+
+## [2026-11-18] ingest | S3 初學者用 Codex 學 Python
+- 重點（5 行）：
+  1. 69 位 10–17 歲、沒寫過文字程式的學生，一半可用 Codex
+  2. 45 個寫程式任務，每題後接一個不能用 AI 的改程式任務（use-modify-create）
+  3. 練習時正確率 1.8 倍、時間 0.57 倍；改程式能力沒有變差
+  4. 一週後保留測驗 Codex 組略高但不顯著；前測高分者受益較多
+  5. 與 S2 看似矛盾 → 建比較頁，說明對象、AI 用法、測驗方式不同
+- 新增頁面：sources/s3-novices-codex.md、comparisons/s3-vs-s2-novice-learning.md；更新 S2 摘要頁（加 ⚠）、兩個主題頁、overview、index
+- lint：第 1 輪失敗 2 項（來源代號「S3」被當成數字，要求出處）→ 修 lint_wiki.py → 第 2 輪通過

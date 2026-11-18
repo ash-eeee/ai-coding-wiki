@@ -1,7 +1,7 @@
 ---
 type: topic
 title: 為什麼還要學程式
-sources: [S1, S2]
+sources: [S1, S2, S3]
 updated: 2026-11-18
 ---
 
@@ -21,8 +21,13 @@ updated: 2026-11-18
 
 學新程式庫時用 AI，事後不用 AI 的測驗分數低 17%，速度也沒有顯著變快 (S2, p.2)。分數差最多的是除錯題 (S2, p.11)。詳見[該怎麼學程式](how-to-learn.md)。
 
+另一項研究的結果較正面：國高中初學者用 AI 練習時表現更好，事後不用 AI 的測驗也沒變差 (S3, p.2)。但那個設計要求學生每題之後都自己改程式 (S3, p.2)。
+
+⚠ 與 S2 結論不同，見[S3 vs S2](../comparisons/s3-vs-s2-novice-learning.md)
+
 ## 相關頁面
 
 - [S1 METR 生產力實驗](../sources/s1-metr-productivity.md)
 - [S2 技能養成研究](../sources/s2-skill-formation.md)
+- [S3 初學者用 Codex](../sources/s3-novices-codex.md)
 - [總覽](../overview.md)

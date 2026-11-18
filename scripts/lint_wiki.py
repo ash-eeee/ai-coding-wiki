@@ -165,7 +165,7 @@ def main() -> int:
                 continue
             if set(b) <= set("|-: "):
                 continue
-            needs = bool(re.search(r"\d", plain)) or any(w in plain for w in RESULT_WORDS)
+            needs = bool(re.search(r"\d", re.sub(r"\bS\d+\b", "", plain)))  # 來源代號 S3 不算數字 or any(w in plain for w in RESULT_WORDS)
             if b.startswith("|") and b.count("|") > 2:
                 # 表頭列（下一列是分隔線）不強制；以含數字或結果詞判斷
                 pass

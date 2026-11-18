@@ -14,10 +14,12 @@ updated: 2026-11-18
 
 ## 主題綜合頁
 
-- [為什麼還要學程式](topics/why-learn.md) — 簡報 ①–③：就業、速度、學習成效（來源：S1, S2）
-- [該怎麼學程式](topics/how-to-learn.md) — 簡報 ④–⑥：怎麼用、學到哪、怎麼練（來源：S2）
+- [為什麼還要學程式](topics/why-learn.md) — 簡報 ①–③：就業、速度、學習成效（來源：S1, S2, S3）
+- [該怎麼學程式](topics/how-to-learn.md) — 簡報 ④–⑥：怎麼用、學到哪、怎麼練（來源：S2, S3）
 
 ## 比較頁
+
+- [S3 vs S2：用 AI 學程式，學得更好還是更差](comparisons/s3-vs-s2-novice-learning.md) — 結論不同，因為對象、AI 用法、測驗方式不同（來源：S2, S3）
 
 ## 概念頁
 
@@ -28,3 +30,4 @@ updated: 2026-11-18
 
 - [S1 METR：AI 讓資深開發者變快了嗎](sources/s1-metr-productivity.md) — 自覺快 20%、實際慢 19%（來源：S1）
 - [S2 Anthropic：用 AI 學新東西，學得會嗎](sources/s2-skill-formation.md) — 測驗低 17%，除錯差最多；用法決定學習成效（來源：S2）
+- [S3 初學者用 Codex 學 Python](sources/s3-novices-codex.md) — 練習更好、事後沒變差；每題後要自己改程式（來源：S3）

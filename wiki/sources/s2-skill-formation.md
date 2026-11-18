@@ -28,6 +28,8 @@ updated: 2026-11-18
 - 只測 1 小時、1 個程式庫；受試者是專業或接案工程師，不是學生 (S2, p.19)。
 - 用的是聊天式 AI；作者推測代理式（agentic）工具卸載更多 (S2, p.19)。
 
+⚠ 與 S3 結論不同，見[S3 vs S2](../comparisons/s3-vs-s2-novice-learning.md)
+
 ## 相關頁面
 
 - [認知卸載](../concepts/cognitive-offloading.md)
