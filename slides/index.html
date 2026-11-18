@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 時代的程式學習</title>
+<style>
+:root { --bg:#fbfaf7; --ink:#1f2328; --muted:#5b6470; --accent:#2f6f5e; --rule:#e3e0d8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; }
+.deck { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.slide { display: none; width: 1280px; height: 720px; background: var(--bg); color: var(--ink);
+  padding: 56px 80px 40px; flex-direction: column; transform-origin: center center; position: relative; }
+.slide.active { display: flex; }
+.slide-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.slide h1 { font-size: 44px; line-height: 1.3; font-weight: 700; color: var(--ink);
+  padding-bottom: 18px; margin-bottom: 26px; border-bottom: 3px solid var(--accent); }
+.slide ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.slide li { font-size: 28px; line-height: 1.45; padding-left: 36px; position: relative; }
+.slide li::before { content: ""; position: absolute; left: 6px; top: 15px; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--accent); }
+.slide .src { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule);
+  font-size: 18px; line-height: 1.4; color: var(--muted); }
+.slide.cover h1 { font-size: 56px; border: none; margin-top: 90px; }
+.slide.cover li { font-size: 30px; }
+.pageno { position: absolute; right: 28px; bottom: 14px; font-size: 16px; color: var(--muted); }
+.hint { position: fixed; left: 12px; bottom: 10px; color: #aaa; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="deck">
+  <section class="slide cover" data-draft="slide-01">
+    <div class="slide-content">
+      <h1>AI 都會寫程式了，我們還要學嗎？</h1>
+      <ul>
+      <li>高曝險職業的年輕人，就業比應有水準低 19%</li>
+      <li>資深工程師用 AI，完成時間反而多 19%</li>
+      <li>今天要回答：程式該學到哪？該怎麼學？</li>
+      </ul>
+      <p class="src">出處：總覽｜S4 p.1；S1 METR 生產力實驗｜S1 p.1</p>
+    </div>
+    <div class="pageno">1 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-02">
+    <div class="slide-content">
+      <h1>① AI 會寫程式了，學程式還有意義嗎？</h1>
+      <ul>
+      <li>高曝險職業的 22–25 歲，就業比跟上同儕應有的水準低 19%</li>
+      <li>實際人數約少 11%，主要是少招新人，不是裁員</li>
+      <li>AI 用來「輔助人」的職業，就業持平或上升</li>
+      <li>這是描述性資料，不是因果證明</li>
+      </ul>
+      <p class="src">出處：為什麼還要學程式、S4 就業研究｜S4 p.1、p.3、p.4</p>
+    </div>
+    <div class="pageno">2 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-03">
+    <div class="slide-content">
+      <h1>② 感覺變快＝實際變快嗎？</h1>
+      <ul>
+      <li>資深開發者事前預估時間少 24%，事後自評少 20%</li>
+      <li>實際測量：完成時間反而多 19%</li>
+      <li>AI 產出接受率不到 44%，常要大改</li>
+      <li>但在不熟的程式碼或小型新專案，AI 可能大幅加速</li>
+      </ul>
+      <p class="src">出處：S1 METR 生產力實驗、感覺 vs 實際｜S1 p.1、p.11、p.12</p>
+    </div>
+    <div class="pageno">3 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-04">
+    <div class="slide-content">
+      <h1>③ 用 AI 學得會嗎？</h1>
+      <ul>
+      <li>有經驗的工程師用 AI 學新程式庫：事後測驗低 17%</li>
+      <li>差最多的是除錯題</li>
+      <li>另一研究：沒寫過程式的中小學生用 AI 練習，事後測驗與對照組相近</li>
+      <li>但那裡每題後都要自己改程式</li>
+      <li>而且好處集中在本來基礎較好的學生</li>
+      </ul>
+      <p class="src">出處：為什麼還要學程式、初學者用 AI 學得好嗎｜S2 p.2、p.11；S3 p.2、p.11</p>
+    </div>
+    <div class="pageno">4 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-05">
+    <div class="slide-content">
+      <h1>④ 差別在怎麼用（上）：哪些用法有學到</h1>
+      <ul>
+      <li>整體而言，用 AI 學新技能，學到的較少</li>
+      <li>高分用法（65%–86%）：只問觀念、要求附解釋</li>
+      <li>低分用法（24%–39%）：全交給 AI、靠 AI 除錯</li>
+      <li>注意：每種用法的人數都很少</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式、S2 技能養成研究｜S2 p.12、p.18、p.19</p>
+    </div>
+    <div class="pageno">5 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-06">
+    <div class="slide-content">
+      <h1>④ 差別在怎麼用（下）：同樣用 AI，結果不同</h1>
+      <ul>
+      <li>準備好的學生，能忽略錯誤或沒用的 AI 建議</li>
+      <li>卡住的 10 人中，9 人靠 AI 做出答案</li>
+      <li>但多數以為自己懂得比實際多</li>
+      <li>另一研究也顯示：好處集中在基礎較好的學生</li>
+      </ul>
+      <p class="src">出處：S6 越拉越大的差距、S3 初學者用 Codex｜S6 p.21；S3 p.11</p>
+    </div>
+    <div class="pageno">6 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-07">
+    <div class="slide-content">
+      <h1>⑤ 學校怎麼教：AI 當助教、不當槍手</h1>
+      <ul>
+      <li>哈佛 CS50 禁用商用 AI 工具，改提供自製助教</li>
+      <li>助教設計成引導學生，不直接給答案</li>
+      <li>每人 10 顆愛心、每 3 分鐘回一顆，限制提問</li>
+      <li>課程問題回答 88% 正確，但答錯時語氣仍很肯定</li>
+      </ul>
+      <p class="src">出處：S5 哈佛 CS50、該怎麼學程式｜S5 p.2、p.4、p.5</p>
+    </div>
+    <div class="pageno">7 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-08">
+    <div class="slide-content">
+      <h1>⑥ 必備能力：讀懂、除錯、觀念</h1>
+      <ul>
+      <li>除錯：看出 AI 程式碼哪裡錯、為什麼錯</li>
+      <li>用 AI 學習時，除錯能力的落差最大</li>
+      <li>自己遇到錯誤、自己解決，可能幫助學習</li>
+      <li>能忽略錯誤的 AI 建議，是要培養的能力</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式、S2 技能養成研究、S6 越拉越大的差距｜S2 p.6、p.11、p.12；S6 p.21</p>
+    </div>
+    <div class="pageno">8 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-09">
+    <div class="slide-content">
+      <h1>⑥ 學習階段：先讀、再改、再寫</h1>
+      <ul>
+      <li>先讀：讀懂 AI 或範例給的程式</li>
+      <li>再改：AI 把「從零寫」變成「先用、再改」</li>
+      <li>研究設計：每個寫程式任務後，都要自己改程式</li>
+      <li>小心：有些人看得出正確答案，卻自己寫不出來</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式、S3 初學者用 Codex、S6 越拉越大的差距｜S3 p.2、p.13；S6 p.22</p>
+    </div>
+    <div class="pageno">9 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-10">
+    <div class="slide-content">
+      <h1>⑥ 具體練習方法</h1>
+      <ul>
+      <li>問觀念、要求解釋，不要只要答案</li>
+      <li>試試 AI 服務的「學習模式」</li>
+      <li>有學生把題目拆成小步驟再問 AI（效果未實測）</li>
+      <li>作者認為要明確學會解題流程</li>
+      <li>作者建議（未實測）：用 AI 程式碼前，先做由它產生的排序題</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式｜S2 p.19、p.20；S3 p.13、p.14；S6 p.22</p>
+    </div>
+    <div class="pageno">10 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-11">
+    <div class="slide-content">
+      <h1>⑥ 用 AI 的守則</h1>
+      <ul>
+      <li>花時間想清楚再問，可能幫助理解</li>
+      <li>AI 語氣肯定不代表正確，要自己驗證</li>
+      <li>不要一直叫 AI 除錯：越常這樣，完成越慢</li>
+      <li>老師示範過用法，仍有學生以為自己懂了</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式｜S2 p.14；S5 p.5；S6 p.5、p.21</p>
+    </div>
+    <div class="pageno">11 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-12">
+    <div class="slide-content">
+      <h1>⑥ 自我檢查清單</h1>
+      <ul>
+      <li>關掉 AI，我還寫得出來、改得動嗎？</li>
+      <li>我只是看得懂，還是自己也寫得出來？</li>
+      <li>我覺得懂了，是真懂，還是被 AI 帶著走？</li>
+      <li>我說的「我沒怎麼用 AI」，真的準確嗎？</li>
+      </ul>
+      <p class="src">出處：該怎麼學程式、後設認知｜S2 p.7；S6 p.21、p.22</p>
+    </div>
+    <div class="pageno">12 / 13</div>
+  </section>
+  <section class="slide" data-draft="slide-13">
+    <div class="slide-content">
+      <h1>總結：AI 能幫你，但「會」要自己練</h1>
+      <ul>
+      <li>AI 用來輔助人的工作，沒有減少</li>
+      <li>感覺變快，不等於真的變快</li>
+      <li>全交給 AI，學到的較少；問觀念、要解釋較好</li>
+      <li>能看出 AI 哪裡錯，是用好 AI 的重要能力</li>
+      </ul>
+      <p class="src">出處：總覽、該怎麼學程式｜S4 p.1；S1 p.1；S2 p.18、p.19；S6 p.21</p>
+    </div>
+    <div class="pageno">13 / 13</div>
+  </section>
+</div>
+<div class="hint">← → 翻頁</div>
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+let cur = 0;
+function fit() {
+  const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+  slides.forEach(el => el.style.transform = `scale(${s})`);
+}
+function goTo(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((el, k) => el.classList.toggle('active', k === cur));
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+document.addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); goTo(cur + 1); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); goTo(cur - 1); }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End') goTo(slides.length - 1);
+});
+document.addEventListener('click', e => { goTo(e.clientX > window.innerWidth / 2 ? cur + 1 : cur - 1); });
+window.addEventListener('resize', fit);
+window.goTo = goTo;
+fit();
+goTo((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+</body>
+</html>
