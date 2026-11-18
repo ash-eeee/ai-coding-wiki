@@ -1,0 +1,11 @@
+# 論文 PDF 與轉出的純文字有版權，不推上 GitHub
+raw/*.pdf
+raw/text/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 系統檔
+.DS_Store
