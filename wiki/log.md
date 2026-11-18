@@ -42,3 +42,13 @@ title: Wiki 紀錄
   5. 與 S2 看似矛盾 → 建比較頁，說明對象、AI 用法、測驗方式不同
 - 新增頁面：sources/s3-novices-codex.md、comparisons/s3-vs-s2-novice-learning.md；更新 S2 摘要頁（加 ⚠）、兩個主題頁、overview、index
 - lint：第 1 輪失敗 2 項（來源代號「S3」被當成數字，要求出處）→ 修 lint_wiki.py → 第 2 輪通過
+
+## [2026-11-18] ingest | S4 Canaries 就業研究（2026 年 8 月修訂版）
+- 重點（5 行）：
+  1. ADP 薪資資料、每月 350–500 萬人、到 2026 年 6 月；本 wiki 用最新修訂版
+  2. 整體沒有大量取代；高曝險職業 22–25 歲就業比應有水準低 19%，資深者無類似落差
+  3. 主要是少招新人；集中在 AI「取代」型職業，「輔助」型持平或上升
+  4. 機制推測：AI 取代明文知識、輔助經驗知識（與 S1「AI 不懂默契」呼應）
+  5. 作者強調是描述性、非因果；不預測未來
+- 新增頁面：sources/s4-canaries-employment.md、concepts/ai-exposure.md；更新 topics/why-learn.md（新增 ①）、overview、index
+- lint：第 1 輪通過；但自我檢查發現主題頁「帶走的觀念」寫了 S4 沒說的推論（入門門檻會變高），lint 抓不到無數字、無結果詞的推論句 → 改寫為有出處的句子

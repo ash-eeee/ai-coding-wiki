@@ -1,13 +1,22 @@
 ---
 type: topic
 title: 為什麼還要學程式
-sources: [S1, S2, S3]
+sources: [S1, S2, S3, S4]
 updated: 2026-11-18
 ---
 
 # 為什麼還要學程式
 
 > 對應簡報 ①–③。
+
+## ① AI 會寫程式了，學程式還有意義嗎？
+
+- 整體就業沒有被 AI 大量取代，但高曝險職業裡 22–25 歲年輕人的就業低了 19% (S4, p.1)。
+- 主要是少招新人；AI 用來輔助人的職業，就業持平或上升 (S4, p.1)。
+- 可能原因：AI 擅長課本上的明文知識，經驗知識仍要靠人 (S4, p.5)。見[AI 曝險](../concepts/ai-exposure.md)。
+- 這是描述性資料，不是因果證明 (S4, p.4)。
+
+**帶走的觀念**：受影響的是 AI 拿來「取代人」的工作；AI 拿來「輔助人」的工作沒有減少 (S4, p.1)。
 
 ## ② 感覺變快＝實際變快嗎？
 
@@ -27,6 +36,7 @@ updated: 2026-11-18
 
 ## 相關頁面
 
+- [S4 就業研究](../sources/s4-canaries-employment.md)
 - [S1 METR 生產力實驗](../sources/s1-metr-productivity.md)
 - [S2 技能養成研究](../sources/s2-skill-formation.md)
 - [S3 初學者用 Codex](../sources/s3-novices-codex.md)
