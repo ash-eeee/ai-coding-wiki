@@ -11,7 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_drafts import ABSOLUTE_RE  # noqa: E402
 from common import find_quote, normalize, parse_cites  # noqa: E402
-from topic_common import TAG_RE, number_tokens  # noqa: E402
+from topic_common import TAG_RE, number_tokens, parse_visual  # noqa: E402
 
 CASES = []
 
@@ -46,6 +46,12 @@ case("「不是因果證明」不算", bool(ABSOLUTE_RE.search("不是因果證�
 # 重點卡片標籤
 m = TAG_RE.search("差最多的是除錯題 〔C11, C12〕")
 case("卡片標籤解析", m.group(1) if m else None, "C11, C12")
+
+# v2.1 視覺規格
+v = parse_visual("bar｜完成時間變化（%）｜事前預估=-24；實際測量=+19")
+case("視覺規格解析", (v["kind"], v["items"]), ("bar", [("事前預估", "-24"), ("實際測量", "+19")]))
+case("範圍數字", number_tokens("65-86"), {"65", "86"})
+case("分數形式", number_tokens("9/10"), {"9", "10"})
 
 
 def main() -> int:

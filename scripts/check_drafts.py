@@ -13,6 +13,10 @@ v2 新增（把 G3 常抓到的問題往前移）：
 - 條件保留：卡片有 keep 清單時，同一頁引用該卡片的非問句重點中，至少要出現 keep 裡的一個詞
 - 絕對化用語：重點不得出現「才能、才會、才用、一定、絕對、必定、保證、證明了」等把相關說成必要條件的詞
 - 總結頁（最後一頁）引用的卡片，都必須在前面的頁出現過（總結不得有新論點）
+
+v2.1 新增（使用者回饋：簡報不能只有文字）：
+- 每頁必須有一行「視覺：類型｜標題｜項目；項目 〔Cxx〕」，類型限 bar／range／bignum／grid／donut／icons／flow／checklist
+- 視覺必須標卡片，且卡片屬於本頁卡片列；視覺中的每個數字都必須在所標卡片的 numbers
 通過 exit 0，否則 exit 1。
 """
 import re
@@ -20,7 +24,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from topic_common import draft_files, han_count, load_cards, number_tokens, parse_draft, parse_outline  # noqa: E402
+from topic_common import VISUAL_TYPES, draft_files, han_count, load_cards, number_tokens, parse_draft, parse_outline, parse_visual  # noqa: E402
 
 MIN_PAGES, MAX_PAGES = 12, 15
 MIN_B, MAX_B, MAX_HAN = 3, 5, 40
@@ -107,6 +111,27 @@ def main() -> int:
             for token in number_tokens(b):
                 if token not in nums:
                     errors.append(f"{tag}：數字 {token} 不在該重點所標卡片 {bcards} 的 numbers：{short}")
+        # v2.1 視覺
+        if not d["visual"]:
+            errors.append(f"{tag}：缺「視覺：」行（每頁都要有圖表或圖示）")
+        else:
+            v = parse_visual(d["visual"])
+            if v["kind"] not in VISUAL_TYPES:
+                errors.append(f"{tag}：視覺類型 {v['kind']} 不合法，應為 {sorted(VISUAL_TYPES)}")
+            if not v["items"]:
+                errors.append(f"{tag}：視覺沒有任何項目")
+            if not d["visual_cards"]:
+                errors.append(f"{tag}：視覺沒有標卡片 〔Cxx〕")
+            vnums: set[str] = set()
+            for cid in d["visual_cards"]:
+                if cid not in d["cards"]:
+                    errors.append(f"{tag}：視覺標的 {cid} 不在本頁卡片列")
+                if cid in cards:
+                    for x in cards[cid]["numbers_list"]:
+                        vnums |= number_tokens(x)
+            for token in number_tokens(d["visual"]):
+                if token not in vnums:
+                    errors.append(f"{tag}：視覺數字 {token} 不在所標卡片 {d['visual_cards']} 的 numbers")
         for cid, hit in keep_hits.items():
             if not hit:
                 errors.append(f"{tag}：引用 {cid} 但沒保留條件詞 {cards[cid]['keep_list']}")

@@ -7,23 +7,26 @@
 <style>
 :root { --bg:#fbfaf7; --ink:#1f2328; --muted:#5b6470; --accent:#2f6f5e; --rule:#e3e0d8; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; }
+html, body { height: 100%; overflow: hidden; background: #2b2b2b; font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; }
 .deck { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.slide { display: none; width: 1280px; height: 720px; background: var(--bg); color: var(--ink);
-  padding: 56px 80px 40px; flex-direction: column; transform-origin: center center; position: relative; }
+/* flex: none：視窗比 1280 窄時投影片不准被壓扁，維持 16:9，只靠 scale 等比縮放 */
+.slide { display: none; flex: none; width: 1280px; height: 720px; background: var(--bg); color: var(--ink);
+  padding: 48px 72px 36px; flex-direction: column; transform-origin: center center; position: relative; }
 .slide.active { display: flex; }
-.slide-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.slide-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
 .slide h1 { font-size: 44px; line-height: 1.3; font-weight: 700; color: var(--ink);
-  padding-bottom: 18px; margin-bottom: 26px; border-bottom: 3px solid var(--accent); }
-.slide ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
-.slide li { font-size: 28px; line-height: 1.45; padding-left: 36px; position: relative; }
-.slide li::before { content: ""; position: absolute; left: 6px; top: 15px; width: 12px; height: 12px;
+  padding-bottom: 14px; margin-bottom: 22px; border-bottom: 3px solid var(--accent); }
+.body { flex: 1; display: flex; gap: 36px; align-items: center; min-height: 0; }
+.slide ul { flex: 1; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.slide li { font-size: 28px; line-height: 1.42; padding-left: 32px; position: relative; }
+.slide li::before { content: ""; position: absolute; left: 4px; top: 14px; width: 12px; height: 12px;
   border-radius: 50%; background: var(--accent); }
-.slide .src { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule);
+.visual { flex: none; width: 420px; height: 440px; }
+.visual svg { display: block; width: 100%; height: 100%; }
+.slide .src { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule);
   font-size: 18px; line-height: 1.4; color: var(--muted); }
-.slide.cover h1 { font-size: 56px; border: none; margin-top: 90px; }
-.slide.cover li { font-size: 30px; }
-.pageno { position: absolute; right: 28px; bottom: 14px; font-size: 16px; color: var(--muted); }
+.slide.cover h1 { font-size: 56px; border: none; margin-top: 30px; }
+.pageno { position: absolute; right: 28px; bottom: 12px; font-size: 16px; color: var(--muted); }
 .hint { position: fixed; left: 12px; bottom: 10px; color: #aaa; font-size: 13px; }
 </style>
 </head>
@@ -32,11 +35,14 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide cover" data-draft="slide-01">
     <div class="slide-content">
       <h1>AI 都會寫程式了，我們還要學嗎？</h1>
+      <div class="body">
       <ul>
-      <li>高曝險職業的年輕人，就業比應有水準低 19%</li>
-      <li>資深工程師在熟悉的大專案用 AI，完成時間反而多 19%</li>
-      <li>今天要回答：程式該學到哪？該怎麼學？</li>
+        <li>高曝險職業的年輕人，就業比應有水準低 19%</li>
+        <li>資深工程師在熟悉的大專案用 AI，完成時間反而多 19%</li>
+        <li>今天要回答：程式該學到哪？該怎麼學？</li>
       </ul>
+      <div class="visual" data-spec="bignum｜｜19%=高曝險職業年輕人就業落差；19%=資深工程師完成時間增加"><svg viewBox="0 0 420 440" role="img" aria-label="bignum"><rect x="0" y="18.0" width="420" height="195" rx="14" fill="#e6efe9"/><text x="210.0" y="125.5" font-size="76" fill="#b5523b" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">19%</text><text x="210.0" y="165.5" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">高曝險職業年輕人就業落差</text><rect x="0" y="233.0" width="420" height="195" rx="14" fill="#e6efe9"/><text x="210.0" y="340.5" font-size="76" fill="#2f6f5e" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">19%</text><text x="210.0" y="380.5" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">資深工程師完成時間增加</text></svg></div>
+      </div>
       <p class="src">出處：總覽｜S4 p.1；S1 METR 生產力實驗｜S1 p.1</p>
     </div>
     <div class="pageno">1 / 13</div>
@@ -44,12 +50,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-02">
     <div class="slide-content">
       <h1>① AI 會寫程式了，學程式還有意義嗎？</h1>
+      <div class="body">
       <ul>
-      <li>高曝險職業的 22–25 歲，就業比跟上同儕應有的水準低 19%</li>
-      <li>實際人數約少 11%，主要是少招新人，不是裁員</li>
-      <li>AI 用來「輔助人」的職業，就業持平或上升</li>
-      <li>這是描述性資料，不是因果證明</li>
+        <li>高曝險職業的 22–25 歲，就業比跟上同儕應有的水準低 19%</li>
+        <li>實際人數約少 11%，主要是少招新人，不是裁員</li>
+        <li>AI 用來「輔助人」的職業，就業持平或上升</li>
+        <li>這是描述性資料，不是因果證明</li>
       </ul>
+      <div class="visual" data-spec="bar｜就業人數變化（%）｜*高曝險 22–25 歲=-11；低曝險 22–25 歲=+10"><svg viewBox="0 0 420 440" role="img" aria-label="就業人數變化（%）"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">就業人數變化（%）</text><line x1="210.0" y1="54" x2="210.0" y2="430" stroke="#8a8f98" stroke-width="2"/><text x="0" y="86.0" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">高曝險 22–25 歲</text><rect x="50.0" y="100.0" width="160.0" height="40" rx="6" fill="#b5523b"/><text x="420" y="86.0" font-size="26" fill="#b5523b" text-anchor="end" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">-11%</text><text x="0" y="271.0" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">低曝險 22–25 歲</text><rect x="210.0" y="285.0" width="145.5" height="40" rx="6" fill="#8a8f98"/><text x="420" y="271.0" font-size="26" fill="#8a8f98" text-anchor="end" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">+10%</text></svg></div>
+      </div>
       <p class="src">出處：為什麼還要學程式、S4 就業研究｜S4 p.1、p.3、p.4</p>
     </div>
     <div class="pageno">2 / 13</div>
@@ -57,12 +66,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-03">
     <div class="slide-content">
       <h1>② 感覺變快＝實際變快嗎？</h1>
+      <div class="body">
       <ul>
-      <li>資深開發者事前預估時間少 24%，事後自評少 20%</li>
-      <li>實際測量：完成時間反而多 19%</li>
-      <li>AI 產出接受率不到 44%，常要大改</li>
-      <li>但在不熟的程式碼或小型新專案，AI 可能大幅加速</li>
+        <li>資深開發者事前預估時間少 24%，事後自評少 20%</li>
+        <li>實際測量：完成時間反而多 19%</li>
+        <li>AI 產出接受率不到 44%，常要大改</li>
+        <li>但在不熟的程式碼或小型新專案，AI 可能大幅加速</li>
       </ul>
+      <div class="visual" data-spec="bar｜完成時間變化（%）｜事前預估=-24；事後自評=-20；*實際測量=+19"><svg viewBox="0 0 420 440" role="img" aria-label="完成時間變化（%）"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">完成時間變化（%）</text><line x1="210.0" y1="54" x2="210.0" y2="430" stroke="#8a8f98" stroke-width="2"/><text x="0" y="86.0" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">事前預估</text><rect x="50.0" y="100.0" width="160.0" height="40" rx="6" fill="#8a8f98"/><text x="420" y="86.0" font-size="26" fill="#8a8f98" text-anchor="end" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">-24%</text><text x="0" y="209.33333333333331" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">事後自評</text><rect x="76.7" y="223.33333333333331" width="133.3" height="40" rx="6" fill="#8a8f98"/><text x="420" y="209.33333333333331" font-size="26" fill="#8a8f98" text-anchor="end" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">-20%</text><text x="0" y="332.66666666666663" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">實際測量</text><rect x="210.0" y="346.66666666666663" width="126.7" height="40" rx="6" fill="#b5523b"/><text x="420" y="332.66666666666663" font-size="26" fill="#b5523b" text-anchor="end" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">+19%</text></svg></div>
+      </div>
       <p class="src">出處：S1 METR 生產力實驗、感覺 vs 實際｜S1 p.1、p.11、p.12</p>
     </div>
     <div class="pageno">3 / 13</div>
@@ -70,13 +82,16 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-04">
     <div class="slide-content">
       <h1>③ 用 AI 學得會嗎？</h1>
+      <div class="body">
       <ul>
-      <li>有經驗的工程師用 AI 學新程式庫：事後測驗低 17%</li>
-      <li>差最多的是除錯題</li>
-      <li>另一研究：沒寫過文字程式的中小學生用 AI 練習，事後測驗與對照組相近</li>
-      <li>但那裡每題後都要自己改程式</li>
-      <li>而且好處集中在本來基礎較好的學生</li>
+        <li>有經驗的工程師用 AI 學新程式庫：事後測驗低 17%</li>
+        <li>差最多的是除錯題</li>
+        <li>另一研究：沒寫過文字程式的中小學生用 AI 練習，事後測驗與對照組相近</li>
+        <li>但那裡每題後都要自己改程式</li>
+        <li>而且好處集中在本來基礎較好的學生</li>
       </ul>
+      <div class="visual" data-spec="bignum｜｜-17%=工程師學新程式庫的測驗分數；相近=中小學生事後測驗 vs 對照組"><svg viewBox="0 0 420 440" role="img" aria-label="bignum"><rect x="0" y="18.0" width="420" height="195" rx="14" fill="#e6efe9"/><text x="210.0" y="125.5" font-size="76" fill="#b5523b" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">-17%</text><text x="210.0" y="165.5" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">工程師學新程式庫的測驗分數</text><rect x="0" y="233.0" width="420" height="195" rx="14" fill="#e6efe9"/><text x="210.0" y="340.5" font-size="76" fill="#2f6f5e" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">相近</text><text x="210.0" y="380.5" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">中小學生事後測驗 vs 對照組</text></svg></div>
+      </div>
       <p class="src">出處：為什麼還要學程式、初學者用 AI 學得好嗎｜S2 p.2、p.11；S3 p.2、p.11</p>
     </div>
     <div class="pageno">4 / 13</div>
@@ -84,12 +99,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-05">
     <div class="slide-content">
       <h1>④ 差別在怎麼用（上）：哪些用法有學到</h1>
+      <div class="body">
       <ul>
-      <li>整體而言，用 AI 學新技能，學到的較少</li>
-      <li>高分用法（65%–86%）：只問觀念、要求附解釋</li>
-      <li>低分用法（24%–39%）：全交給 AI、靠 AI 除錯</li>
-      <li>注意：每種用法的人數都很少</li>
+        <li>整體而言，用 AI 學新技能，學到的較少</li>
+        <li>高分用法（65%–86%）：只問觀念、要求附解釋</li>
+        <li>低分用法（24%–39%）：全交給 AI、靠 AI 除錯</li>
+        <li>注意：每種用法的人數都很少</li>
       </ul>
+      <div class="visual" data-spec="range｜不同用法的測驗分數｜只問觀念、要求解釋=65-86；全交給 AI、靠 AI 除錯=24-39"><svg viewBox="0 0 420 440" role="img" aria-label="不同用法的測驗分數"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">不同用法的測驗分數</text><text x="0" y="94.0" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">只問觀念、要求解釋</text><rect x="10" y="110.0" width="400" height="34" rx="6" fill="#efede7"/><rect x="270.0" y="110.0" width="84.0" height="34" rx="6" fill="#2f6f5e"/><text x="312.0" y="178.0" font-size="28" fill="#2f6f5e" text-anchor="middle" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">65–86%</text><text x="0" y="249.0" font-size="22" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">全交給 AI、靠 AI 除錯</text><rect x="10" y="265.0" width="400" height="34" rx="6" fill="#efede7"/><rect x="106.0" y="265.0" width="60.0" height="34" rx="6" fill="#b5523b"/><text x="136.0" y="333.0" font-size="28" fill="#b5523b" text-anchor="middle" font-weight="700" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">24–39%</text><text x="10.0" y="428" font-size="18" fill="#8a8f98" text-anchor="start" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">0</text><text x="210.0" y="428" font-size="18" fill="#8a8f98" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">50%</text><text x="410.0" y="428" font-size="18" fill="#8a8f98" text-anchor="end" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">100%</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式、S2 技能養成研究｜S2 p.12、p.18、p.19</p>
     </div>
     <div class="pageno">5 / 13</div>
@@ -97,12 +115,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-06">
     <div class="slide-content">
       <h1>④ 差別在怎麼用（下）：同樣用 AI，結果不同</h1>
+      <div class="body">
       <ul>
-      <li>準備好的學生，能忽略錯誤或沒用的 AI 建議</li>
-      <li>卡住的 10 人中，9 人靠 AI 做出答案</li>
-      <li>但多數以為自己懂得比實際多</li>
-      <li>另一研究也顯示：好處集中在基礎較好的學生</li>
+        <li>準備好的學生，能忽略錯誤或沒用的 AI 建議</li>
+        <li>卡住的 10 人中，9 人靠 AI 做出答案</li>
+        <li>但多數以為自己懂得比實際多</li>
+        <li>另一研究也顯示：好處集中在基礎較好的學生</li>
       </ul>
+      <div class="visual" data-spec="grid｜卡住的學生｜9/10=靠 AI 做出答案"><svg viewBox="0 0 420 440" role="img" aria-label="卡住的學生"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">卡住的學生</text><circle cx="42" cy="88" r="17" fill="#b5523b"/><rect x="18" y="112" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="118" cy="88" r="17" fill="#b5523b"/><rect x="94" y="112" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="194" cy="88" r="17" fill="#b5523b"/><rect x="170" y="112" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="270" cy="88" r="17" fill="#b5523b"/><rect x="246" y="112" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="346" cy="88" r="17" fill="#b5523b"/><rect x="322" y="112" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="42" cy="218" r="17" fill="#b5523b"/><rect x="18" y="242" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="118" cy="218" r="17" fill="#b5523b"/><rect x="94" y="242" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="194" cy="218" r="17" fill="#b5523b"/><rect x="170" y="242" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="270" cy="218" r="17" fill="#b5523b"/><rect x="246" y="242" width="48" height="58" rx="20" fill="#b5523b"/><circle cx="346" cy="218" r="17" fill="#d5d2ca"/><rect x="322" y="242" width="48" height="58" rx="20" fill="#d5d2ca"/><text x="210.0" y="360" font-size="44" fill="#b5523b" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">9 / 10</text><text x="210.0" y="400" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">靠 AI 做出答案</text></svg></div>
+      </div>
       <p class="src">出處：S6 越拉越大的差距、S3 初學者用 Codex｜S6 p.21；S3 p.11</p>
     </div>
     <div class="pageno">6 / 13</div>
@@ -110,12 +131,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-07">
     <div class="slide-content">
       <h1>⑤ 學校怎麼教：AI 當助教、不當槍手</h1>
+      <div class="body">
       <ul>
-      <li>哈佛 CS50 禁用商用 AI 工具，改提供自製助教</li>
-      <li>助教設計成引導學生，不直接給答案</li>
-      <li>每人 10 顆愛心、每 3 分鐘回一顆，限制提問</li>
-      <li>課程問題回答 88% 正確，但答錯時語氣仍很肯定</li>
+        <li>哈佛 CS50 禁用商用 AI 工具，改提供自製助教</li>
+        <li>助教設計成引導學生，不直接給答案</li>
+        <li>每人 10 顆愛心、每 3 分鐘回一顆，限制提問</li>
+        <li>課程問題回答 88% 正確，但答錯時語氣仍很肯定</li>
       </ul>
+      <div class="visual" data-spec="donut｜課程問題的 AI 回答｜88%=正確（2023 夏季論壇）"><svg viewBox="0 0 420 440" role="img" aria-label="課程問題的 AI 回答"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">課程問題的 AI 回答</text><circle cx="210.0" cy="210" r="130" fill="none" stroke="#e3e0d8" stroke-width="36"/><circle cx="210.0" cy="210" r="130" fill="none" stroke="#2f6f5e" stroke-width="36" stroke-dasharray="718.8 816.8" transform="rotate(-90 210.0 210)"/><text x="210.0" y="232" font-size="64" fill="#2f6f5e" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">88%</text><text x="210.0" y="420" font-size="22" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">正確（2023 夏季論壇）</text></svg></div>
+      </div>
       <p class="src">出處：S5 哈佛 CS50、該怎麼學程式｜S5 p.2、p.4、p.5</p>
     </div>
     <div class="pageno">7 / 13</div>
@@ -123,12 +147,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-08">
     <div class="slide-content">
       <h1>⑥ 必備能力：讀懂、除錯、觀念</h1>
+      <div class="body">
       <ul>
-      <li>除錯：看出 AI 程式碼哪裡錯、為什麼錯</li>
-      <li>用 AI 學習時，除錯能力的落差最大</li>
-      <li>自己遇到錯誤、自己解決，可能幫助學習</li>
-      <li>能忽略錯誤的 AI 建議，是要培養的能力</li>
+        <li>除錯：看出 AI 程式碼哪裡錯、為什麼錯</li>
+        <li>用 AI 學習時，除錯能力的落差最大</li>
+        <li>自己遇到錯誤、自己解決，可能幫助學習</li>
+        <li>能忽略錯誤的 AI 建議，是要培養的能力</li>
       </ul>
+      <div class="visual" data-spec="icons｜三項必備能力｜除錯=bug；讀程式=eye；觀念=bulb"><svg viewBox="0 0 420 440" role="img" aria-label="三項必備能力"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">三項必備能力</text><rect x="0" y="46" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="78" r="24" fill="#2f6f5e"/><g transform="translate(38 78)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="3" rx="8" ry="11"/><circle cx="0" cy="-11" r="4"/><path d="M-8 -2 h-7 M8 -2 h7 M-8 6 h-7 M8 6 h7 M-7 12 l-6 5 M7 12 l6 5"/></g><text x="76" y="86.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">除錯</text><rect x="0" y="122" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="154" r="24" fill="#2f6f5e"/><g transform="translate(38 154)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-15 0 Q0 -13 15 0 Q0 13 -15 0 Z"/><circle cx="0" cy="0" r="4.5"/></g><text x="76" y="162.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">讀程式</text><rect x="0" y="198" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="230" r="24" fill="#2f6f5e"/><g transform="translate(38 230)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-6 8 Q-12 2 -12 -5 A12 12 0 0 1 12 -5 Q12 2 6 8 Z"/><path d="M-5 12 h10 M-3 16 h6"/></g><text x="76" y="238.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">觀念</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式、S2 技能養成研究、S6 越拉越大的差距｜S2 p.6、p.11、p.12；S6 p.21</p>
     </div>
     <div class="pageno">8 / 13</div>
@@ -136,12 +163,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-09">
     <div class="slide-content">
       <h1>⑥ 學習階段：先讀、再改、再寫</h1>
+      <div class="body">
       <ul>
-      <li>先讀：讀懂 AI 或範例給的程式</li>
-      <li>再改：AI 把「從零寫」變成「先用、再改」</li>
-      <li>研究設計：每個寫程式任務後，都要自己改程式</li>
-      <li>小心：有些人看得出正確答案，卻自己寫不出來</li>
+        <li>先讀：讀懂 AI 或範例給的程式</li>
+        <li>再改：AI 把「從零寫」變成「先用、再改」</li>
+        <li>研究設計：每個寫程式任務後，都要自己改程式</li>
+        <li>小心：有些人看得出正確答案，卻自己寫不出來</li>
       </ul>
+      <div class="visual" data-spec="flow｜學習順序｜讀；改；寫"><svg viewBox="0 0 420 440" role="img" aria-label="學習順序"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">學習順序</text><rect x="40" y="50" width="340" height="107" rx="16" fill="#2f6f5e"/><text x="210.0" y="115.66666666666666" font-size="34" fill="#fff" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">讀</text><path d="M210.0 161 v20 m-10 -10 l10 10 l10 -10" fill="none" stroke="#8a8f98" stroke-width="4" stroke-linecap="round"/><rect x="40" y="191" width="340" height="107" rx="16" fill="#e6efe9"/><text x="210.0" y="257.0" font-size="34" fill="#2f6f5e" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">改</text><path d="M210.0 303 v20 m-10 -10 l10 10 l10 -10" fill="none" stroke="#8a8f98" stroke-width="4" stroke-linecap="round"/><rect x="40" y="333" width="340" height="107" rx="16" fill="#e6efe9"/><text x="210.0" y="398.3333333333333" font-size="34" fill="#2f6f5e" text-anchor="middle" font-weight="800" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">寫</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式、S3 初學者用 Codex、S6 越拉越大的差距｜S3 p.2、p.13；S6 p.22</p>
     </div>
     <div class="pageno">9 / 13</div>
@@ -149,13 +179,16 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-10">
     <div class="slide-content">
       <h1>⑥ 具體練習方法</h1>
+      <div class="body">
       <ul>
-      <li>問觀念、要求解釋，不要只要答案</li>
-      <li>試試 AI 服務的「學習模式」</li>
-      <li>有學生把題目拆成小步驟再問 AI（效果未實測）</li>
-      <li>作者認為要明確學會解題流程</li>
-      <li>作者建議（未實測）：用 AI 程式碼前，先做由它產生的排序題</li>
+        <li>問觀念、要求解釋，不要只要答案</li>
+        <li>試試 AI 服務的「學習模式」</li>
+        <li>有學生把題目拆成小步驟再問 AI（效果未實測）</li>
+        <li>作者認為要明確學會解題流程</li>
+        <li>作者建議（未實測）：用 AI 程式碼前，先做由它產生的排序題</li>
       </ul>
+      <div class="visual" data-spec="icons｜五個練習方法｜問觀念、要解釋=bulb；學習模式=book；拆成小步驟=steps；學解題流程=flow；先做排序題=sort"><svg viewBox="0 0 420 440" role="img" aria-label="五個練習方法"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">五個練習方法</text><rect x="0" y="46" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="78" r="24" fill="#2f6f5e"/><g transform="translate(38 78)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-6 8 Q-12 2 -12 -5 A12 12 0 0 1 12 -5 Q12 2 6 8 Z"/><path d="M-5 12 h10 M-3 16 h6"/></g><text x="76" y="86.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">問觀念、要解釋</text><rect x="0" y="122" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="154" r="24" fill="#2f6f5e"/><g transform="translate(38 154)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M0 -10 Q-8 -14 -15 -11 V11 Q-8 8 0 12 Q8 8 15 11 V-11 Q8 -14 0 -10 Z M0 -10 V12"/></g><text x="76" y="162.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">學習模式</text><rect x="0" y="198" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="230" r="24" fill="#2f6f5e"/><g transform="translate(38 230)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-15 14 h8 v-8 h8 v-8 h8 v-8 h7"/></g><text x="76" y="238.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">拆成小步驟</text><rect x="0" y="274" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="306" r="24" fill="#2f6f5e"/><g transform="translate(38 306)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="-11" cy="0" r="4"/><circle cx="0" cy="0" r="4"/><circle cx="11" cy="0" r="4"/><path d="M-7 0 h3 M4 0 h3"/></g><text x="76" y="314.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">學解題流程</text><rect x="0" y="350" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="382" r="24" fill="#2f6f5e"/><g transform="translate(38 382)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-13 -9 h16 M-13 0 h22 M-13 9 h10"/><path d="M13 -9 v16 m-4 -4 l4 4 l4 -4"/></g><text x="76" y="390.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">先做排序題</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式｜S2 p.19、p.20；S3 p.13、p.14；S6 p.22</p>
     </div>
     <div class="pageno">10 / 13</div>
@@ -163,12 +196,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-11">
     <div class="slide-content">
       <h1>⑥ 用 AI 的守則</h1>
+      <div class="body">
       <ul>
-      <li>花時間想清楚再問，可能幫助理解</li>
-      <li>AI 語氣肯定不代表正確，要自己驗證</li>
-      <li>不要一直叫 AI 除錯：越常這樣，完成越慢</li>
-      <li>老師示範過用法，仍有學生以為自己懂了</li>
+        <li>花時間想清楚再問，可能幫助理解</li>
+        <li>AI 語氣肯定不代表正確，要自己驗證</li>
+        <li>不要一直叫 AI 除錯：越常這樣，完成越慢</li>
+        <li>老師示範過用法，仍有學生以為自己懂了</li>
       </ul>
+      <div class="visual" data-spec="icons｜用 AI 的守則｜想清楚再問=think；自己驗證=verify；別讓 AI 代替除錯=nobug；別以為自己懂了=alert"><svg viewBox="0 0 420 440" role="img" aria-label="用 AI 的守則"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">用 AI 的守則</text><rect x="0" y="46" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="78" r="24" fill="#2f6f5e"/><g transform="translate(38 78)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-6 -6 A6 6 0 1 1 2 0 Q0 2 0 6"/><circle cx="0" cy="12" r="1.5"/></g><text x="76" y="86.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">想清楚再問</text><rect x="0" y="122" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="154" r="24" fill="#2f6f5e"/><g transform="translate(38 154)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M0 -14 L12 -9 V0 Q12 10 0 15 Q-12 10 -12 0 V-9 Z"/><path d="M-6 0 l4 5 l8 -9"/></g><text x="76" y="162.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">自己驗證</text><rect x="0" y="198" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="230" r="24" fill="#2f6f5e"/><g transform="translate(38 230)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="0" cy="2" rx="7" ry="10"/><path d="M-7 -2 h-6 M7 -2 h6 M-6 7 h-6 M6 7 h6"/><path d="M-14 -14 L14 14"/></g><text x="76" y="238.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">別讓 AI 代替除錯</text><rect x="0" y="274" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="306" r="24" fill="#2f6f5e"/><g transform="translate(38 306)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M0 -14 L15 12 H-15 Z"/><path d="M0 -4 v8"/><circle cx="0" cy="8" r="1.5"/></g><text x="76" y="314.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">別以為自己懂了</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式｜S2 p.14；S5 p.5；S6 p.5、p.21</p>
     </div>
     <div class="pageno">11 / 13</div>
@@ -176,12 +212,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-12">
     <div class="slide-content">
       <h1>⑥ 自我檢查清單</h1>
+      <div class="body">
       <ul>
-      <li>關掉 AI，我還寫得出來、改得動嗎？</li>
-      <li>我只是看得懂，還是自己也寫得出來？</li>
-      <li>我覺得懂了，是真懂，還是被 AI 帶著走？</li>
-      <li>我說的「我沒怎麼用 AI」，真的準確嗎？</li>
+        <li>關掉 AI，我還寫得出來、改得動嗎？</li>
+        <li>我只是看得懂，還是自己也寫得出來？</li>
+        <li>我覺得懂了，是真懂，還是被 AI 帶著走？</li>
+        <li>我說的「我沒怎麼用 AI」，真的準確嗎？</li>
       </ul>
+      <div class="visual" data-spec="checklist｜｜關掉 AI 還寫得出來；不只看得懂；真的懂，不是被帶著走；說得出用了多少 AI"><svg viewBox="0 0 420 440" role="img" aria-label="checklist"><rect x="0" y="46" width="420" height="64" rx="12" fill="#e6efe9"/><rect x="18" y="62" width="32" height="32" rx="6" fill="#fff" stroke="#2f6f5e" stroke-width="3"/><path d="M24 78 l7 8 l14 -16" fill="none" stroke="#2f6f5e" stroke-width="4" stroke-linecap="round"/><text x="76" y="86.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">關掉 AI 還寫得出來</text><rect x="0" y="122" width="420" height="64" rx="12" fill="#e6efe9"/><rect x="18" y="138" width="32" height="32" rx="6" fill="#fff" stroke="#2f6f5e" stroke-width="3"/><path d="M24 154 l7 8 l14 -16" fill="none" stroke="#2f6f5e" stroke-width="4" stroke-linecap="round"/><text x="76" y="162.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">不只看得懂</text><rect x="0" y="198" width="420" height="64" rx="12" fill="#e6efe9"/><rect x="18" y="214" width="32" height="32" rx="6" fill="#fff" stroke="#2f6f5e" stroke-width="3"/><path d="M24 230 l7 8 l14 -16" fill="none" stroke="#2f6f5e" stroke-width="4" stroke-linecap="round"/><text x="76" y="238.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">真的懂，不是被帶著走</text><rect x="0" y="274" width="420" height="64" rx="12" fill="#e6efe9"/><rect x="18" y="290" width="32" height="32" rx="6" fill="#fff" stroke="#2f6f5e" stroke-width="3"/><path d="M24 306 l7 8 l14 -16" fill="none" stroke="#2f6f5e" stroke-width="4" stroke-linecap="round"/><text x="76" y="314.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">說得出用了多少 AI</text></svg></div>
+      </div>
       <p class="src">出處：該怎麼學程式、後設認知｜S2 p.7；S6 p.21、p.22</p>
     </div>
     <div class="pageno">12 / 13</div>
@@ -189,12 +228,15 @@ html, body { height: 100%; background: #2b2b2b; font-family: "PingFang TC", "Not
   <section class="slide" data-draft="slide-13">
     <div class="slide-content">
       <h1>總結：AI 能幫你，但「會」要自己練</h1>
+      <div class="body">
       <ul>
-      <li>AI 用來輔助人的工作，沒有減少</li>
-      <li>感覺變快，不等於真的變快</li>
-      <li>全交給 AI，學到的較少；問觀念、要解釋較好</li>
-      <li>能看出 AI 哪裡錯，是用好 AI 的重要能力</li>
+        <li>AI 用來輔助人的工作，沒有減少</li>
+        <li>感覺變快，不等於真的變快</li>
+        <li>全交給 AI，學到的較少；問觀念、要解釋較好</li>
+        <li>能看出 AI 哪裡錯，是用好 AI 的重要能力</li>
       </ul>
+      <div class="visual" data-spec="icons｜帶走四句話｜輔助型工作沒減少=up；感覺不等於實際=neq；問觀念、要解釋=bulb；看出 AI 哪裡錯=search"><svg viewBox="0 0 420 440" role="img" aria-label="帶走四句話"><text x="0" y="26" font-size="22" fill="#8a8f98" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">帶走四句話</text><rect x="0" y="46" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="78" r="24" fill="#2f6f5e"/><g transform="translate(38 78)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-14 12 L-5 2 L2 7 L14 -8"/><path d="M6 -8 h8 v8"/></g><text x="76" y="86.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">輔助型工作沒減少</text><rect x="0" y="122" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="154" r="24" fill="#2f6f5e"/><g transform="translate(38 154)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-11 -4 h22 M-11 5 h22 M6 -13 L-6 14"/></g><text x="76" y="162.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">感覺不等於實際</text><rect x="0" y="198" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="230" r="24" fill="#2f6f5e"/><g transform="translate(38 230)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M-6 8 Q-12 2 -12 -5 A12 12 0 0 1 12 -5 Q12 2 6 8 Z"/><path d="M-5 12 h10 M-3 16 h6"/></g><text x="76" y="238.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">問觀念、要解釋</text><rect x="0" y="274" width="420" height="64" rx="12" fill="#e6efe9"/><circle cx="38" cy="306" r="24" fill="#2f6f5e"/><g transform="translate(38 306)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="-3" cy="-3" r="9"/><path d="M4 4 l9 9"/></g><text x="76" y="314.0" font-size="24" fill="#1f2328" text-anchor="start" font-weight="600" font-family="PingFang TC, Noto Sans TC, Microsoft JhengHei, sans-serif">看出 AI 哪裡錯</text></svg></div>
+      </div>
       <p class="src">出處：總覽、該怎麼學程式｜S4 p.1；S1 p.1；S2 p.18、p.19；S6 p.21</p>
     </div>
     <div class="pageno">13 / 13</div>

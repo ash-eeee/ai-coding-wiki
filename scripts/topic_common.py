@@ -95,6 +95,7 @@ def parse_outline() -> dict[str, list[str]]:
 def parse_draft(p: Path) -> dict:
     title, bullets, source_line, cards = "", [], "", []
     bullet_cards: list[list[str]] = []
+    visual, visual_cards = "", []
     for line in p.read_text(encoding="utf-8").splitlines():
         s = line.strip()
         if s.startswith("# ") and not title:
@@ -104,11 +105,17 @@ def parse_draft(p: Path) -> dict:
             m = TAG_RE.search(b)  # v2：每個重點結尾標 〔C01, C02〕
             bullet_cards.append(re.findall(r"C\d+", m.group(1)) if m else [])
             bullets.append(TAG_RE.sub("", b).strip())
+        elif re.match(r"^視覺[:：]", s):  # v2.1：每頁一個圖表／圖示規格
+            v = re.sub(r"^視覺[:：]\s*", "", s)
+            m = TAG_RE.search(v)
+            visual_cards = re.findall(r"C\d+", m.group(1)) if m else []
+            visual = TAG_RE.sub("", v).strip()
         elif re.match(r"^出處[:：]", s):
             source_line = re.sub(r"^出處[:：]\s*", "", s)
         elif re.match(r"^卡片[:：]", s):
             cards = re.findall(r"C\d+", s)
-    return {"title": title, "bullets": bullets, "bullet_cards": bullet_cards, "source": source_line, "cards": cards}
+    return {"title": title, "bullets": bullets, "bullet_cards": bullet_cards, "source": source_line, "cards": cards,
+            "visual": visual, "visual_cards": visual_cards}
 
 
 def draft_files() -> list[Path]:
@@ -117,3 +124,22 @@ def draft_files() -> list[Path]:
 
 def number_tokens(s: str) -> set[str]:
     return {t.replace(",", "") for t in NUM_RE.findall(s)}
+
+
+VISUAL_TYPES = {"bar", "range", "bignum", "grid", "donut", "icons", "flow", "checklist"}
+
+
+def parse_visual(spec: str) -> dict:
+    """視覺規格：`類型｜標題｜項目；項目；…`，項目可為 `名稱=值`。"""
+    parts = [x.strip() for x in spec.split("｜")]
+    kind = parts[0] if parts else ""
+    title = parts[1] if len(parts) > 1 else ""
+    items = []
+    if len(parts) > 2 and parts[2]:
+        for it in parts[2].split("；"):
+            it = it.strip()
+            if not it:
+                continue
+            k, _, v = it.partition("=")
+            items.append((k.strip(), v.strip()))
+    return {"kind": kind, "title": title, "items": items}

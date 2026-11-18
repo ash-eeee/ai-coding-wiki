@@ -1,0 +1,17 @@
+G4 渲染檢查失敗：16 個問題
+  ✗ 第 1 頁（slide-01）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 2 頁（slide-02）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 3 頁（slide-03）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 4 頁（slide-04）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 5 頁（slide-05）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 6 頁（slide-06）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 7 頁（slide-07）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 8 頁（slide-08）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 9 頁（slide-09）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 10 頁（slide-10）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 11 頁（slide-11）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 12 頁（slide-12）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 第 13 頁（slide-13）：draft 有視覺，HTML 卻沒有視覺區
+  ✗ 視窗 1024×768：投影片顯示比例 1.42，不是 16:9（1.78）
+  ✗ 視窗 800×600：投影片顯示比例 1.11，不是 16:9（1.78）
+  ✗ 視窗 390×844：投影片顯示比例 0.54，不是 16:9（1.78）
