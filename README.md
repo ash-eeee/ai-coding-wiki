@@ -37,26 +37,104 @@
 
 設計原則：**Graph 為主、Loop 為輔**。Graph 決定大流程，每個節點內部是有次數上限的小 loop。完整規格：[`.claude/skills/topic-slides/SKILL.md`](.claude/skills/topic-slides/SKILL.md)（輸入 `/topic-slides` 觸發）。
 
+**圖例**：藍＝AI 執行的節點、綠＝程式檢查（腳本）、橘＝AI 審查（新的 subagent）、粉紅＝人工確認、虛線＝反思後建議但尚未實作。框起來的區塊＝節點內的小 loop。
+
+### 階段 A：建立 LLM Wiki
+
 ```mermaid
 flowchart TD
-    B0["B0 腳本自我測試<br/>selftest.py（v2 新增）"] --> N0
-    N0["N0 簡報規格<br/>brief.md"] --> N1["N1 檢索 wiki<br/>sources.md"]
-    N1 --> G1{"G1 覆蓋率<br/>check_coverage.py"}
-    G1 -- 不足 --> STOP1(["停下回報<br/>不硬湊"])
-    G1 -- 通過 --> N2["N2 證據卡 cards/<br/>⟲ check_cards.py ≤2 輪"]
-    N2 --> N3["N3 大綱 outline.md"]
-    N3 --> H1{"H1 使用者確認大綱"}
-    H1 -- 退回 --> N3
-    H1 -- 缺證據 --> N1
-    H1 -- 通過 --> N4["N4 逐頁稿 drafts/<br/>⟲ check_drafts.py ≤2 輪"]
-    N4 --> G3{"G3 忠實度審查<br/>新的 faithfulness-reviewer"}
-    G3 -- 某頁講反／過度推論 --> N4
-    G3 -- 證據卡錯 --> N2
-    G3 -- 通過 --> N5["N5 渲染 slides/index.html<br/>⟲ 截圖修版面 ≤2 輪"]
-    N5 --> G4{"G4 渲染檢查<br/>check_render.py"}
-    G4 -- 溢出 --> N4
-    G4 -- 通過 --> N6["N6 交件 report.md"]
+    A1["A1 準備<br/>git init・raw/ 放 6 篇論文"] --> A2["A2 先討論<br/>AI 一次問一題，共 9 題"]
+    A2 --> A2h{"使用者確認<br/>需求摘要"}
+    A2h -->|要修改| A2
+    A2h -->|確認| A3["A3 生成 AGENTS.md<br/>CLAUDE.md = @AGENTS.md"]
+    A3 --> A3h{"使用者逐條對照<br/>摘要 ↔ AGENTS.md"}
+    A3h -->|有遺漏| A3
+    A3h -->|通過| R
+
+    subgraph ING["A5 逐篇 ingest（S1 → S6，每篇一次）　⟲ lint 最多 2 輪"]
+        R["讀原文"] --> D["討論重點"]
+        D --> W["寫摘要頁、概念頁、比較頁<br/>更新 index.md、log.md"]
+        W --> L{"lint_wiki.py<br/>9 項檢查"}
+        L -->|失敗| W
+    end
+
+    L -->|通過・commit・下一篇| R
+    L -->|6 篇完成| A6{"A6 全站 lint<br/>＋新 subagent 語意審查"}
+    A6 -->|語意問題 20 項| W
+    A6 -->|通過| DONE(["Wiki 完成 → 進入簡報 graph"])
+
+    classDef ai fill:#e8f0fe,stroke:#4a6fa5,color:#1a2b45
+    classDef script fill:#e6f4ea,stroke:#3c8d5a,color:#173d26
+    classDef review fill:#fff4e5,stroke:#c77c1e,color:#4a2c05
+    classDef human fill:#fce8f0,stroke:#b5476e,color:#4a1428
+    classDef stop fill:#f1f1f1,stroke:#888,color:#333
+
+    class A1,A2,A3,R,D,W ai
+    class L script
+    class A6 review
+    class A2h,A3h human
+    class DONE stop
 ```
+
+### 階段 B：產生教學簡報（graph 為主，每格內是小 loop）
+
+```mermaid
+flowchart TD
+    B0["B0 腳本自我測試<br/>selftest.py（v2 新增）"] --> N0["N0 簡報規格<br/>brief.md"]
+    N0 --> N1["N1 檢索 wiki<br/>sources.md"]
+    N1 --> G1{"G1 覆蓋率關卡<br/>check_coverage.py"}
+    G1 -->|不足| STOP1(["停下回報<br/>不硬湊"])
+    G1 -->|通過| N2a
+
+    subgraph L2["N2 證據卡　⟲ 小 loop 最多 2 輪"]
+        N2a["寫卡<br/>claim・scope・keep・原文引句"] --> N2c{"check_cards.py<br/>引句逐字比對原文"}
+        N2c -->|失敗| N2a
+    end
+
+    N2c -->|通過| N3["N3 大綱<br/>outline.md"]
+    N3 --> H1{"H1 使用者確認大綱"}
+    H1 -->|退回| N3
+    H1 -->|缺證據| N1
+    H1 -->|通過| N4a
+
+    subgraph L4["N4 逐頁稿　⟲ 小 loop 最多 2 輪"]
+        N4a["寫稿<br/>每個重點標〔Cxx〕"] --> N4c{"check_drafts.py<br/>數字・條件詞・絕對化用語・字數"}
+        N4c -->|失敗| N4a
+    end
+
+    N4c -->|通過| G3{"G3 忠實度審查<br/>新的 faithfulness-reviewer"}
+    G3 -->|某頁講反／漏條件<br/>只退回那一頁| N4a
+    G3 -->|證據卡本身錯| N2a
+    G3 -->|通過| N5a
+
+    subgraph L5["N5 渲染　⟲ 小 loop 最多 2 輪"]
+        N5a["build_slides.py<br/>逐字轉成 slides/index.html"] --> N5c["截圖檢視版面"]
+        N5c -->|版面問題| N5a
+    end
+
+    N5c --> G4{"G4 渲染檢查 check_render.py<br/>6 種視窗 16:9・溢出・圖表裁切"}
+    G4 -->|字太多溢出| N4a
+    G4 -->|通過| N6["N6 交件<br/>report.md"]
+    N6 -.->|v2.1 反思：建議新增| H2{"H2 人看成品<br/>（尚未實作）"}
+
+    BRAKE["全域剎車：同一關卡退回 3 次 → 停下交給使用者"]
+
+    classDef ai fill:#e8f0fe,stroke:#4a6fa5,color:#1a2b45
+    classDef script fill:#e6f4ea,stroke:#3c8d5a,color:#173d26
+    classDef review fill:#fff4e5,stroke:#c77c1e,color:#4a2c05
+    classDef human fill:#fce8f0,stroke:#b5476e,color:#4a1428
+    classDef stop fill:#f1f1f1,stroke:#888,color:#333
+    classDef todo fill:#ffffff,stroke:#b5476e,stroke-dasharray:5 4,color:#4a1428
+
+    class N0,N1,N2a,N3,N4a,N5a,N5c,N6 ai
+    class B0,G1,N2c,N4c,G4 script
+    class G3 review
+    class H1 human
+    class STOP1,BRAKE stop
+    class H2 todo
+```
+
+> 註：本次實際執行時，H1 依使用者指示未停下確認（見 commit `5335d19`）；v2.1 的反思認為 N5 之後還需要一個「人看成品」的關卡（H2）。
 
 **哪些步驟會重複執行（小 loop）**
 - N2：寫卡 → `check_cards.py`（引文逐字比對原文、數字要在原文該頁）→ 修，最多 2 輪
